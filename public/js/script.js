@@ -74,6 +74,7 @@ $(".form-item").submit(function(e){ //user clicks form submit button
     }).done(function(data){ //on Ajax success
         $(".pro").removeClass("d-none");
 
+
         for (const key in data) {
             if (key=="description") {
                 var des = data[key];
@@ -82,7 +83,17 @@ $(".form-item").submit(function(e){ //user clicks form submit button
                 var pri = data[key];
                 var cant = 1;
 
-                $(".pro").append("<tr><td>"+des+"</td><td>"+pri+"</td><td><input class='col-10 cant' value='"+cant+"'></td><td class='importe'>"+pri*cant+"</td></tr>");
+                $(".pro").append("<tr class='fila'><td>"+des+"</td><td>"+pri+"</td><td><input class='col-10 cant' value='"+cant+"'></td><td class='importe'>"+pri*cant+"</td><td><a  class='btn eliminar btn-danger'>X</a></td></tr>");
+
+                $(".eliminar").click(function(){
+                    // Obtenemos el total de columnas (tr) del id "tabla"
+                    var trs=$(".table tr").length;
+                    if(trs>0)
+                    {
+                    // Eliminamos la ultima columna
+                    $(".fila").remove();
+                    }
+                })
                 $(".cant").change(function (e) {
                     e.preventDefault();
                     var cantidadMo = $(".cant").val();
