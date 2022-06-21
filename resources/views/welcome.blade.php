@@ -38,6 +38,35 @@
                                 <input type="text" class="form-control" id="numeroRuc" placeholder="RUC" name="ruc">
                             </div>
                         </div>
+                        <div class="form-group row mb-3">
+                            <label for="tipoDoc" class="col-sm-2 m-0 col-form-label d-flex justify-content-end">Año</label>
+                            <div class="col-sm-4">
+                                <select class="custom-select form-control" id="year" name="year">
+                                    {{-- <option selected value="00">Todos</option> --}}
+                                    <option value="2022">2022</option>
+                                    <option value="03">2023</option>
+                                </select>
+                            </div>
+                            <label for="tipoDoc" class="col-sm-2 col-form-label d-flex justify-content-end">Mes</label>
+                            <div class="col-sm-4">
+                                <select class="custom-select form-control" id="month" name="month">
+                                    {{-- <option selected value="00">Todos</option> --}}
+                                    <option value="01">Enero</option>
+                                    <option value="02">Febrero</option>
+                                    <option value="03">Marzo</option>
+                                    <option value="04">Abril</option>
+                                    <option value="05">Mayo</option>
+                                    <option value="06">Junio</option>
+                                    <option value="07">Julio</option>
+                                    <option value="08">Agosto</option>
+                                    <option value="09">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                </select>
+                            </div>
+
+                        </div>
                         <div class="form-group row">
                             <label for="tipoDoc" class="col-sm-4 col-form-label">Tipo de documento</label>
                             <div class="col-sm-8">
@@ -45,10 +74,14 @@
                                     {{-- <option selected value="00">Todos</option> --}}
                                     <option value="01">Factura</option>
                                     <option value="03">Boleta</option>
-                                    {{-- <option value="3">Guías de remisión</option>
-                                    <option value="4">Liquidación de compra</option> --}}
+                                    <option value="00">Nota de venta</option>
+                                    <option value="09">Guías de remisión</option>
+                                    <option value="4">Liquidación de compra</option>
                                     <option value="07">Nota de crédito</option>
                                     <option value="08">Nota de débito</option>
+                                    <option value="OV">Orden de venta</option>
+                                    <option value="CT">Cotización</option>
+                                    <option value="OC">Orden de compra</option>
                                 </select>
                             </div>
 
@@ -146,10 +179,10 @@
     </div>
     <div class="container mt-2">
         <div class="row d-flex align-items-center justify-content-center">
-            <div class="form-group m-2 col-3">
+            <div class="form-group m-2 col-2">
                 <div class="input-group mr-2">
                     <select class="form-control filtro" id="filtro">
-                        <option value="" selected>Seleccione</option>
+                        <option value="" selected>Seleccione fecha</option>
                         <option value=<?php echo date("Y-m-d H:i:s",strtotime("-0 days"));  ?> >Hoy</option>   
                         <option value=<?php echo date("Y-m-d H:i:s",strtotime("-1 days"));  ?> >Ultimo dia</option>
                         <option value=<?php echo date("Y-m-d H:i:s",strtotime("-2 days")); ?>  >Ultimo 2 días</option>

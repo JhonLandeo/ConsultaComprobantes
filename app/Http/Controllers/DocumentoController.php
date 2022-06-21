@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Guide;
 use App\Models\Invoice;
+use App\Models\Liquidation;
+use App\Models\Purchase;
+use App\Models\Quote;
+use App\Models\SalesOrder;
 use App\Models\Voided;
 use Illuminate\Http\Request;
 
@@ -19,21 +23,61 @@ class DocumentoController extends Controller
     }
 
    
-    public function total($ruc, $type)
+    public function total($ruc, $type, $month, $year)
     {
         $factura = Invoice::join('enterprises', 'invoices.enterprise_id' , '=' ,'enterprises.id')
         ->where('number_doc',$ruc)
         ->where('type_doc',$type)
+        ->whereMonth('invoices.created_at',$month)
+        ->whereYear('invoices.created_at',$year)
         ->count();
         return $factura;
     }
 
-    public function totalGuias($ruc, $type){
-        $factura = Guide::join('enterprises', 'guides.enterprise_id' , '=' ,'enterprises.id')
+    public function totalGuias($ruc, $type, $month, $year){
+        $guias = Guide::join('enterprises', 'guides.enterprise_id' , '=' ,'enterprises.id')
         ->where('number_doc',$ruc)
         ->where('type_doc',$type)
+        ->whereMonth('guides.created_at',$month)
+        ->whereYear('guides.created_at',$year)
         ->count();
-        return $factura;
+        return $guias;
+    }
+    public function totalOrdenVenta($ruc, $type, $month, $year){
+        $ordenVenta = SalesOrder::join('enterprises', 'sales_order.enterprise_id' , '=' ,'enterprises.id')
+        ->where('number_doc',$ruc)
+        ->where('type_doc',$type)
+        ->whereMonth('sales_order.created_at',$month)
+        ->whereYear('sales_order.created_at',$year)
+        ->count();
+        return $ordenVenta;
+    }
+    public function totalCotizacion($ruc, $type, $month, $year){
+        $cotizacion = Quote::join('enterprises', 'quote.enterprise_id' , '=' ,'enterprises.id')
+        ->where('number_doc',$ruc)
+        ->where('type_doc',$type)
+        ->whereMonth('quote.created_at',$month)
+        ->whereYear('quote.created_at',$year)
+        ->count();
+        return $cotizacion;
+    }
+    public function totalLiquidacion($ruc, $type, $month, $year){
+        $liquidacion = Liquidation::join('enterprises', 'liquidation_purchase.enterprise_id' , '=' ,'enterprises.id')
+        ->where('number_doc',$ruc)
+        ->where('type_doc',$type)
+        ->whereMonth('liquidation_purchase.created_at',$month)
+        ->whereYear('liquidation_purchase.created_at',$year)
+        ->count();
+        return $liquidacion;
+    }
+    public function totalPurchase($ruc, $type, $month, $year){
+        $purchase = Purchase::join('enterprises', 'purchase_order.enterprise_id' , '=' ,'enterprises.id')
+        ->where('number_doc',$ruc)
+        ->where('type_doc',$type)
+        ->whereMonth('purchase_order.created_at',$month)
+        ->whereYear('purchase_order.created_at',$year)
+        ->count();
+        return $purchase;
     }
 
    

@@ -4,15 +4,76 @@ $('#btnConsultar').click(function (e) {
     e.preventDefault();
     var ruc = $('#numeroRuc').val();
     var tipo = $('#tipoDoc').val();
-    $.ajax({
-        type: "GET",
-        url: "/total/"+ruc+"/"+tipo,
-        data: "data",
-        dataType: "JSON",
-        success: function (data) {
-            $('#total').val(data);
-        }
-    });
+    var month = $('#month').val();
+    var year = $('#year').val();
+    if (tipo == 01 || tipo == 03 || tipo == 00 || tipo == 07 || tipo == 08)  {
+        $.ajax({
+            type: "GET",
+            url: "/total/"+ruc+"/"+tipo+"/"+month+"/"+year,
+            data: "data",
+            dataType: "JSON",
+            success: function (data) {
+                $('#total').val(data);
+            }
+        });
+    }
+    
+    if (tipo == 09) {
+        $.ajax({
+            type: "GET",
+            url: "/totalGuias/"+ruc+"/"+tipo+"/"+month+"/"+year,
+            data: "data",
+            dataType: "JSON",
+            success: function (data) {
+                $('#total').val(data);
+            }
+        });
+    }
+    if (tipo == 'OV') {
+        $.ajax({
+            type: "GET",
+            url: "/totalOrdenVenta/"+ruc+"/"+tipo+"/"+month+"/"+year,
+            data: "data",
+            dataType: "JSON",
+            success: function (data) {
+                $('#total').val(data);
+            }
+        });
+    }
+    if (tipo == 'CT') {
+        $.ajax({
+            type: "GET",
+            url: "/totalCotizacion/"+ruc+"/"+tipo+"/"+month+"/"+year,
+            data: "data",
+            dataType: "JSON",
+            success: function (data) {
+                $('#total').val(data);
+            }
+        });   
+    }
+    if (tipo == 04) {
+        $.ajax({
+            type: "GET",
+            url: "/totalLiquidacion/"+ruc+"/"+tipo+"/"+month+"/"+year,
+            data: "data",
+            dataType: "JSON",
+            success: function (data) {
+                $('#total').val(data);
+            }
+        });
+    }
+    if (tipo == 'OC') {
+        $.ajax({
+            type: "GET",
+            url: "/totalPurchase/"+ruc+"/"+tipo+"/"+month+"/"+year,
+            data: "data",
+            dataType: "JSON",
+            success: function (data) {
+                $('#total').val(data);
+            }
+        });
+    }
+    
 });
 
 

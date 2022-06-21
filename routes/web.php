@@ -16,7 +16,12 @@ use App\Http\Controllers\PedidoController;
 */
 Route::get('/', [DocumentoController::class, 'index']);
 
-Route::get('total/{ruc}/{type}', [DocumentoController::class, 'total']);
+Route::get('total/{ruc}/{type}/{month}/{year}', [DocumentoController::class, 'total']);
+Route::get('totalGuias/{ruc}/{type}/{month}/{year}', [DocumentoController::class, 'totalGuias']);
+Route::get('totalOrdenVenta/{ruc}/{type}/{month}/{year}', [DocumentoController::class, 'totalOrdenVenta']);
+Route::get('totalCotizacion/{ruc}/{type}/{month}/{year}', [DocumentoController::class, 'totalCotizacion']);
+Route::get('totalLiquidacion/{ruc}/{type}/{month}/{year}', [DocumentoController::class, 'totalLiquidacion']);
+Route::get('totalPurchase/{ruc}/{type}/{month}/{year}', [DocumentoController::class, 'totalPurchase']);
 Route::get('doc/{ruc}/{type}/{series}/{number}', [DocumentoController::class, 'doc']);
 Route::get('pedido', [PedidoController::class, 'create']);
 Route::get('producto/idProducto={id}', [PedidoController::class, 'producto']);
