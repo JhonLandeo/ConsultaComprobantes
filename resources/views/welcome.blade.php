@@ -118,7 +118,7 @@
                             </div>
 
                         </div> --}}
-                        <div class="form-group row p-2 align-items-center">
+                        {{-- <div class="form-group row p-2 align-items-center">
                             <label  class="col-sm-4 col-form-label" >Fecha de emisión</label>
                             <div class="col-sm-8">
                                 <input type="date" class="form-control" id="fecha" placeholder="19/05/2000">
@@ -129,7 +129,7 @@
                             <div class="col-sm-8">
                                 <input type="text" class="form-control" id="monto" placeholder="">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row p-3">
                             <button class="btn btn-success col-4" id="btnConsultarDoc">Consultar</button>
                             <div class="col-8">
@@ -143,6 +143,99 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container mt-2">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="form-group m-2 col-3">
+                <div class="input-group mr-2">
+                    <select class="form-control filtro" id="filtro">
+                        <option value="" selected>Seleccione</option>
+                        <option value=<?php echo date("Y-m-d H:i:s",strtotime("-0 days"));  ?> >Hoy</option>   
+                        <option value=<?php echo date("Y-m-d H:i:s",strtotime("-1 days"));  ?> >Ultimo dia</option>
+                        <option value=<?php echo date("Y-m-d H:i:s",strtotime("-2 days")); ?>  >Ultimo 2 días</option>
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-3">
+                <button class="btn btn-success col-8" id="btnConsultarFecha">Consultar</button>
+                
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <table class="table table-hover col-5 table-success table-striped table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center" colspan="3" scope="row">ENVIO DE DOCUMENTOS</th>
+                        </tr>
+                      <tr>
+                        <th scope="col">Documento</th>
+                        <th scope="col">Pendientes</th>
+                        {{-- <th scope="col">Aceptados</th> --}}
+                        <th scope="col">Rechazados</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Factura</th>
+                        <td class="fp"></td>
+                        {{-- <td>Otto</td> --}}
+                        <td class="fr"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Boleta</th>
+                        <td class="bp"></td>
+                        {{-- <td>Thornton</td> --}}
+                        <td class="br"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Nota de crédito</th>
+                        <td class="ncp"></td>
+                        {{-- <td>the Bird</td> --}}
+                        <td class="ncr"></td>
+                      </tr>
+                      {{-- <tr>
+                        <th scope="row">Nota de débito</th>
+                        <td class="ndp"></td>
+                       
+                        <td class="ndr"></td>
+                      </tr> --}}
+                      <tr>
+                        <th scope="row">Total</th>
+                        <td class="totalPendientes"></td>
+                       {{--  <td>the Bird</td> --}}
+                        <td class="totalRechazados"></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6">
+                <table class="table table-hover col-5 table-success table-striped table-bordered">
+                    <thead class="thead-light">
+                        <tr>
+                            <th class="text-center" colspan="3" scope="row">ENVIO DE BAJAS</th>
+                        </tr>
+                      <tr>
+                        <th scope="col">Pendiente</th>
+                        <th scope="col">Rechazados</th>
+                        <th scope="col">En proceso</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="bap"></td>
+                        <td class="bar"></td>
+                        <td class="bapr"></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+          
+        
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"

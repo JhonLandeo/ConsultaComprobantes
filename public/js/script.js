@@ -1,6 +1,5 @@
 
 
-
 $('#btnConsultar').click(function (e) {
     e.preventDefault();
     var ruc = $('#numeroRuc').val();
@@ -20,10 +19,10 @@ $('#btnConsultar').click(function (e) {
 
 $('#btnConsultarDoc').click(function (e) {
     e.preventDefault();
-    var fecha_emision = $('#fecha').val();
+    /* var fecha_emision = $('#fecha').val(); */
     var ruc = $('#numeroRucDoc').val();
     var tipo = $('#tipoDocumento').val();
-    var monto = $('#monto').val();
+    /* var monto = $('#monto').val(); */
     var serie = $('#numeroSerie').val();
     var numero = $('#numero').val();
     var aceptado ="El documento se encuentra aceptado";
@@ -32,7 +31,7 @@ $('#btnConsultarDoc').click(function (e) {
     var noValido = "El documento que esta buscando no es válido";
     $.ajax({
         type: "GET",
-        url: "/doc/"+fecha_emision+"/"+ruc+"/"+tipo+"/"+serie+"/"+numero+"/"+monto,
+        url: "/doc/"+ruc+"/"+tipo+"/"+serie+"/"+numero,
         data: "data",
         dataType: "JSON",
         success: function (data) {
@@ -60,6 +59,68 @@ $('#btnConsultarDoc').click(function (e) {
 });
 
 
+/* Tabla de pendiente procesado */
+
+$("#btnConsultarFecha").click(function (e) { 
+    e.preventDefault();
+    var created_at = $(".filtro").val();
+    console.log(created_at);
+    
+    $.ajax({
+        type: "GET",
+        url: "/proceso/"+created_at,
+        data: "data",
+        dataType: "JSON",
+        success: function (response) {
+            for (const key in response) {
+                
+                if (key === "pendientes") {
+                    $(".totalPendientes").text(response[key]);
+                }
+                if (key === "pendienteF") {
+                    $(".fp").text(response[key]);
+                }
+                if (key === "pendienteB") {
+                    $(".bp").text(response[key]);
+                }
+                if (key === "pendienteNC") {
+                    $(".ncp").text(response[key]);
+                }
+                /* if (key === "pendientesND") {
+                    $(".ndp").text(response[key]);
+                } */
+                if (key === "rechazados") {
+                    $(".totalRechazados").text(response[key]);
+                }
+                if (key === "rechazadosF") {
+                    $(".fr").text(response[key]);
+                }
+                if (key === "rechazadosB") {
+                    $(".br").text(response[key]);
+                }
+                if (key === "rechazadosNC") {
+                    $(".ncr").text(response[key]);
+                }
+                /* if (key === "rechazadosND") {
+                    $(".ndr").text(response[key]);
+                } */
+                if (key === "bajasp") {
+                    $(".bap").text(response[key]);
+                }
+                if (key === "bajasr") {
+                    $(".bar").text(response[key]);
+                }
+                if (key === "bajaspr") {
+                    $(".bapr").text(response[key]);
+                }
+    
+            }
+        }
+    });
+});
+
+
+
 
 $(".form-item").submit(function(e){ //user clicks form submit button
     e.preventDefault();
@@ -73,8 +134,9 @@ $(".form-item").submit(function(e){ //user clicks form submit button
         data: "data",
     }).done(function(data){ //on Ajax success
         $(".pro").removeClass("d-none");
-
-
+        
+       
+        
         for (const key in data) {
             if (key=="description") {
                 var des = data[key];
@@ -82,18 +144,16 @@ $(".form-item").submit(function(e){ //user clicks form submit button
             if (key=="price") {
                 var pri = data[key];
                 var cant = 1;
-
-                $(".pro").append("<tr class='fila'><td>"+des+"</td><td>"+pri+"</td><td><input class='col-10 cant' value='"+cant+"'></td><td class='importe'>"+pri*cant+"</td><td><a  class='btn eliminar btn-danger'>X</a></td></tr>");
-
-                $(".eliminar").click(function(){
-                    // Obtenemos el total de columnas (tr) del id "tabla"
-                    var trs=$(".table tr").length;
-                    if(trs>0)
-                    {
-                    // Eliminamos la ultima columna
-                    $(".fila").remove();
-                    }
+                var nrows = 0; 
+                $("table tr").each(function() {
+                    nrows++;
                 })
+               console.log(nrows);
+               
+              let html = '<tr id="fila'+nrows+'" class="fila"><td>'+des+'</td><td>'+pri+'</td><td><input class="col-10 cant" value="'+cant+'"></td><td class="importe">'+pri*cant+'</td><td><input type="button" onclick="eliminarFila('+nrows+')" class="btn btn-danger" value="X" /></td></tr>';
+                $(".pro").append(html);
+
+               
                 $(".cant").change(function (e) {
                     e.preventDefault();
                     var cantidadMo = $(".cant").val();
@@ -102,6 +162,9 @@ $(".form-item").submit(function(e){ //user clicks form submit button
             }
 
         }
+        function eliminarFila(index) {
+            $("#fila" + index).remove();
+          }
 
     })
     e.preventDefault();

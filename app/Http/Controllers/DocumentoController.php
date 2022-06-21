@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guide;
 use App\Models\Invoice;
+use App\Models\Voided;
 use Illuminate\Http\Request;
 
 class DocumentoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function index()
     {
 
@@ -20,11 +18,7 @@ class DocumentoController extends Controller
         return view('welcome');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function total($ruc, $type)
     {
         $factura = Invoice::join('enterprises', 'invoices.enterprise_id' , '=' ,'enterprises.id')
@@ -34,73 +28,61 @@ class DocumentoController extends Controller
         return $factura;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function doc($fecha_emision, $ruc, $type, $series, $number, $total){
+    public function totalGuias($ruc, $type){
+        $factura = Guide::join('enterprises', 'guides.enterprise_id' , '=' ,'enterprises.id')
+        ->where('number_doc',$ruc)
+        ->where('type_doc',$type)
+        ->count();
+        return $factura;
+    }
+
+   
+    public function doc( $ruc, $type, $series, $number){
 
 
-        $doc = Invoice::whereDate('date_of_issue',$fecha_emision)
-        ->join('enterprises', 'invoices.enterprise_id' , '=' ,'enterprises.id')
+        $doc = Invoice::/* whereDate('date_of_issue',$fecha_emision) */
+        join('enterprises', 'invoices.enterprise_id' , '=' ,'enterprises.id')
         ->select('invoices.status')
         ->where('number_doc',$ruc)
         ->where('type_doc',$type)
         ->where('invoices.series',$series)
         ->where('number',$number)
-        ->where('total',$total)
+        /* ->where('total',$total) */
         ->get();
         return $doc;
     }
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    
+    
+    public function procesar($created_at){
+        $pendientes = Invoice::where('status',0)->whereDate('created_at',$created_at)->count();
+        $pendienteF = Invoice::where('status',0)->whereDate('created_at',$created_at)->where('type_doc',01)->count();
+        $pendienteB = Invoice::where('status',0)->whereDate('created_at',$created_at)->where('type_doc',03)->count();
+        $pendienteNC = Invoice::where('status',0)->whereDate('created_at',$created_at)->where('type_doc',07)->count();
+       /*  $pendienteNB = Invoice::where('status',0)->where('type_doc',08)->count(); */
+        $rechazados = Invoice::where('status',2)->whereDate('created_at',$created_at)->count();
+        $rechazadosF = Invoice::where('status',2)->whereDate('created_at',$created_at)->where('type_doc',01)->count();
+        $rechazadosB = Invoice::where('status',2)->whereDate('created_at',$created_at)->where('type_doc',03)->count();
+        $rechazadosNC = Invoice::where('status',2)->whereDate('created_at',$created_at)->where('type_doc',07)->count();
+       /*  $rechazadosND = Invoice::where('status',2)->where('type_doc',08)->count(); */
+       $bajasp = Voided::where('status',3)->whereDate('created_at',$created_at)->count();
+       $bajasr = Voided::where('status',5)->whereDate('created_at',$created_at)->count();
+       $bajaspr= Voided::where('status',8)->whereDate('created_at',$created_at)->count();
+        $array = [
+            'pendientes' => $pendientes,
+            'pendienteF' => $pendienteF,
+            'pendienteB' => $pendienteB,
+            'pendienteNC' => $pendienteNC,
+            /* 'pendienteND' => $pendienteNB, */
+            'rechazados' => $rechazados,
+            'rechazadosF' => $rechazadosF,
+            'rechazadosB' => $rechazadosB,
+            'rechazadosNC' => $rechazadosNC,
+            /* 'rechazadosND' => $rechazadosND, */
+            'bajasp' => $bajasp,
+            'bajasr' => $bajasr,
+            'bajaspr' => $bajaspr,
+        ];
+        return $array;
     }
 }

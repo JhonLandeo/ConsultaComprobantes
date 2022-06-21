@@ -17,6 +17,7 @@ use App\Http\Controllers\PedidoController;
 Route::get('/', [DocumentoController::class, 'index']);
 
 Route::get('total/{ruc}/{type}', [DocumentoController::class, 'total']);
-Route::get('doc/{fecha_emision}/{ruc}/{type}/{series}/{number}/{total}', [DocumentoController::class, 'doc']);
+Route::get('doc/{ruc}/{type}/{series}/{number}', [DocumentoController::class, 'doc']);
 Route::get('pedido', [PedidoController::class, 'create']);
 Route::get('producto/idProducto={id}', [PedidoController::class, 'producto']);
+Route::get('proceso/{created_at}', [DocumentoController::class, 'procesar']);
