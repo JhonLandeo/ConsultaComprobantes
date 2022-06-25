@@ -183,18 +183,18 @@
                 <div class="input-group mr-2">
                     <select class="form-control filtro" id="filtro">
                         <option value="" selected>Seleccione fecha</option>
-                        <option value=<?php echo date("Y-m-d H:i:s",strtotime("-0 days"));  ?> >Hoy</option>   
-                        <option value=<?php echo date("Y-m-d H:i:s",strtotime("-1 days"));  ?> >Ultimo dia</option>
-                        <option value=<?php echo date("Y-m-d H:i:s",strtotime("-2 days")); ?>  >Ultimo 2 días</option>
+                        <option value=<?php echo date("Y-m-d H:i:s",strtotime("-0 days"));  ?> >Hoy</option>
+                        <option value=<?php echo date("Y-m-d H:i:s",strtotime("-1 days"));  ?> >Hace un dia</option>
+                        <option value=<?php echo date("Y-m-d H:i:s",strtotime("-2 days")); ?>  >Hace 2 días</option>
                     </select>
                 </div>
 
             </div>
             <div class="col-3">
                 <button class="btn btn-success col-8" id="btnConsultarFecha">Consultar</button>
-                
+
             </div>
-            
+
         </div>
         <div class="row">
             <div class="col-6">
@@ -232,7 +232,7 @@
                       {{-- <tr>
                         <th scope="row">Nota de débito</th>
                         <td class="ndp"></td>
-                       
+
                         <td class="ndr"></td>
                       </tr> --}}
                       <tr>
@@ -266,9 +266,9 @@
                 </table>
             </div>
         </div>
-        
-          
-        
+
+
+
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
