@@ -129,4 +129,39 @@ class DocumentoController extends Controller
         ];
         return $array;
     }
+
+    public function cantidadMes($year, $month){
+        $docMes = Invoice::where('status',1)
+        ->whereMonth('invoices.created_at',$month)
+        ->whereYear('invoices.created_at',$year)
+        ->count();
+        return $docMes;
+    }
+
+    public function cantidadMesDash(){
+        $enero = Invoice::where('status',1)
+        ->whereMonth('invoices.created_at',01)
+        ->count();
+        $febrero = Invoice::where('status',1)
+        ->whereMonth('invoices.created_at',02)
+        ->count();
+        $marzo = Invoice::where('status',1)
+        ->whereMonth('invoices.created_at',03)
+        ->count();
+        $abril = Invoice::where('status',1)
+        ->whereMonth('invoices.created_at',04)
+        ->count();
+        $mayo = Invoice::where('status',1)
+        ->whereMonth('invoices.created_at',05)
+        ->count();
+        $junio = Invoice::where('status',1)
+        ->whereMonth('invoices.created_at',06)
+        ->count();
+        $julio = Invoice::where('status',1)
+        ->whereMonth('invoices.created_at',07)
+        ->count();
+        $array = array();
+        array_push($array,$enero,$febrero,$marzo,$abril,$mayo,$junio,$julio);
+        return $array;
+    }
 }

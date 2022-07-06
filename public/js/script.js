@@ -233,6 +233,87 @@ $(".form-item").submit(function(e){ //user clicks form submit button
 
 
 
+let montoTotal=[];
+$('#btnConsultarMes').click(function (e) {
+    e.preventDefault();
+    var month = $('#monthTotal').val();
+    var year = $('#yearTotal').val();
+    $.ajax({
+        type: "GET",
+        url: "/totalMes/"+year+"/"+month,
+        data: "data",
+        dataType: "JSON",
+        success: function (data) {
+            $("#totalMes").val(data);
+            montoTotal.push
+        }
+    });
+});
+
+
+$.ajax({
+    type: "GET",
+    url: "/totalMesDash",
+    data: "data",
+    dataType: "JSON",
+    success: function (response) {
+        const ctx = $('#myChart');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Enero', 'Febr', 'Mar', 'Abril', 'Mayo', 'Junio','Julio'],
+                datasets: [{
+                    data: response,
+                    backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 3
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+                
+            
+        },
+        plugins: {
+            legend: {
+                display: false,
+                
+            },
+            title:{
+                display: true,
+                text: "Cantidad de folios emitidos por mes del 2022"
+            }
+            
+        },
+        
+    }
+});
+    }
+});
+
+
+
+
+
 
 
 

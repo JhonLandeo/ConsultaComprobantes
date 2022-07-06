@@ -15,6 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
@@ -174,6 +175,77 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-5">
+                <div class="card p-2">
+                    <div class="card-title">Consulta total por mes</div>
+                    <form>
+                        <div class="form-group row mb-3">
+                            <label for="tipoDoc" class="col-sm-2 m-0 col-form-label d-flex justify-content-end">Año</label>
+                            <div class="col-sm-4">
+                                <select class="custom-select form-control" id="yearTotal" >
+                                    <option value="2022">2022</option>
+                                    <option value="03">2023</option>
+                                </select>
+                            </div>
+                            <label for="tipoDoc" class="col-sm-2 col-form-label d-flex justify-content-end">Mes</label>
+                            <div class="col-sm-4">
+                                <select class="custom-select form-control" id="monthTotal" >
+                                    <option value="01">Enero</option>
+                                    <option value="02">Febrero</option>
+                                    <option value="03">Marzo</option>
+                                    <option value="04">Abril</option>
+                                    <option value="05">Mayo</option>
+                                    <option value="06">Junio</option>
+                                    <option value="07">Julio</option>
+                                    <option value="08">Agosto</option>
+                                    <option value="09">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        {{-- <div class="form-group row">
+                            <label for="tipoDoc" class="col-sm-4 col-form-label">Tipo de documento</label>
+                            <div class="col-sm-8">
+                                <select class="custom-select form-control" id="tipoDoc" name="type_doc">
+                                    <option value="01">Factura</option>
+                                    <option value="03">Boleta</option>
+                                    <option value="00">Nota de venta</option>
+                                    <option value="09">Guías de remisión</option>
+                                    <option value="4">Liquidación de compra</option>
+                                    <option value="07">Nota de crédito</option>
+                                    <option value="08">Nota de débito</option>
+                                    <option value="OV">Orden de venta</option>
+                                    <option value="CT">Cotización</option>
+                                    <option value="OC">Orden de compra</option>
+                                </select>
+                            </div>
+
+                        </div> --}}
+                        <div class="form-group row p-3  ">
+                            <button class="btn btn-success col-4" id="btnConsultarMes">Consultar</button>
+                            <div class="col-4 d-flex justify-content-end">
+                                <label for="total" >Total</label>
+                            </div>
+
+                            <div class="col-4 p-0">
+
+                                <input type="text" class="form-control total" id="totalMes">
+
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-7">
+                <canvas id="myChart" width="400" height="200"></canvas>
             </div>
         </div>
     </div>
