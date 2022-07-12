@@ -280,7 +280,9 @@ $.ajax({
                 'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'
                 ],
-                borderWidth: 3
+                borderWidth: 3,
+                fill: 'start',
+                hidden: false
         }]
     },
     options: {
@@ -311,7 +313,164 @@ $.ajax({
 });
 
 
+$.ajax({
+    type: "GET",
+    url: "/cantidadCliente",
+    data: "data",
+    dataType: "JSON",
+    success: function (response) {
+        const ctx = $('#chartEnterprise');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Enero', 'Febr', 'Mar', 'Abril', 'Mayo', 'Junio','Julio'],
+                datasets: [{
+                    data: response,
+                    backgroundColor: [
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+        
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 3,
+                fill: 'start',
+                hidden: false
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+                
+            
+        },
+        plugins: {
+            legend: {
+                display: false,
+                
+            },
+            title:{
+                display: true,
+                text: "Cantidad de clientes por mes(2022)"
+            }
+            
+        },
+        
+    }
+});
+    }
+});
 
+
+$.ajax({
+    type: "GET",
+    url: "/topCliente",
+    data: "data",
+    dataType: "JSON",
+    success: function (response) {
+        var arrayClient= [];
+        for (const key in response) {
+            var data = response[key];
+            for (const k in data) {
+                arrayClient.push(data[k]);
+            }
+
+        }
+        console.log(arrayClient);
+        
+        const ctx = $('#chartClient');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: arrayClient.map( i => i.business_name),
+                datasets: [{
+                    data: arrayClient.map( i => i.cantidad),
+                    backgroundColor: [
+                    
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                    
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 3,
+                    fill: 'start',
+                    hidden: false
+                },
+            ]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                display: false,
+                
+            },
+            title:{
+                display: true,
+                text: "Cliente con más folios emitidos por mes(2022)"
+            }
+            
+        },
+        
+        
+        
+    }
+});
+    }
+});
+let easing = helpers.easingEffects.easeOutQuad;
+let restart = false;
+const totalDuration = 5000;
+const duration = (ctx) => easing(ctx.index / data.length) * totalDuration / data.length;
+const delay = (ctx) => easing(ctx.index / data.length) * totalDuration;
+const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+const animation = {
+  x: {
+    type: 'number',
+    easing: 'linear',
+    duration: duration,
+    from: NaN, // the point is initially skipped
+    delay(ctx) {
+      if (ctx.type !== 'data' || ctx.xStarted) {
+        return 0;
+      }
+      ctx.xStarted = true;
+      return delay(ctx);
+    }
+  },
+  y: {
+    type: 'number',
+    easing: 'linear',
+    duration: duration,
+    from: previousY,
+    delay(ctx) {
+      if (ctx.type !== 'data' || ctx.yStarted) {
+        return 0;
+      }
+      ctx.yStarted = true;
+      return delay(ctx);
+    }
+  }
+};
 
 
 

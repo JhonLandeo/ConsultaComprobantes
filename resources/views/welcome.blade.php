@@ -178,7 +178,7 @@
             </div>
         </div>
         <div class="row mt-2">
-            <div class="col-5">
+            {{-- <div class="col-5">
                 <div class="card p-2">
                     <div class="card-title">Consulta total por mes</div>
                     <form>
@@ -209,24 +209,6 @@
                             </div>
 
                         </div>
-                        {{-- <div class="form-group row">
-                            <label for="tipoDoc" class="col-sm-4 col-form-label">Tipo de documento</label>
-                            <div class="col-sm-8">
-                                <select class="custom-select form-control" id="tipoDoc" name="type_doc">
-                                    <option value="01">Factura</option>
-                                    <option value="03">Boleta</option>
-                                    <option value="00">Nota de venta</option>
-                                    <option value="09">Guías de remisión</option>
-                                    <option value="4">Liquidación de compra</option>
-                                    <option value="07">Nota de crédito</option>
-                                    <option value="08">Nota de débito</option>
-                                    <option value="OV">Orden de venta</option>
-                                    <option value="CT">Cotización</option>
-                                    <option value="OC">Orden de compra</option>
-                                </select>
-                            </div>
-
-                        </div> --}}
                         <div class="form-group row p-3  ">
                             <button class="btn btn-success col-4" id="btnConsultarMes">Consultar</button>
                             <div class="col-4 d-flex justify-content-end">
@@ -243,9 +225,17 @@
                         </div>
                     </form>
                 </div>
-            </div>
-            <div class="col-7">
+            </div> --}}
+            <div class="col-6">
                 <canvas id="myChart" width="400" height="200"></canvas>
+            </div>
+            <div class="col-6">
+                <canvas id="chartEnterprise" width="400" height="200"></canvas>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-12">
+                <canvas id="chartClient" width="400" height="150"></canvas>
             </div>
         </div>
     </div>

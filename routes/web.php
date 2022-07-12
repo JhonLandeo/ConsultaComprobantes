@@ -19,6 +19,8 @@ Route::get('/', [DocumentoController::class, 'index']);
 Route::get('total/{ruc}/{type}/{month}/{year}', [DocumentoController::class, 'total']);
 Route::get('totalMes/{month}/{year}', [DocumentoController::class, 'cantidadMes']);
 Route::get('totalMesDash', [DocumentoController::class, 'cantidadMesDash']);
+Route::get('cantidadCliente', [DocumentoController::class, 'getEnterprise']);
+Route::get('topCliente', [DocumentoController::class, 'topClient']);
 Route::get('totalGuias/{ruc}/{type}/{month}/{year}', [DocumentoController::class, 'totalGuias']);
 Route::get('totalOrdenVenta/{ruc}/{type}/{month}/{year}', [DocumentoController::class, 'totalOrdenVenta']);
 Route::get('totalCotizacion/{ruc}/{type}/{month}/{year}', [DocumentoController::class, 'totalCotizacion']);

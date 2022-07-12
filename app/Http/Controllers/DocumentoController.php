@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enterprise;
 use App\Models\Guide;
 use App\Models\Invoice;
 use App\Models\Liquidation;
@@ -10,6 +11,7 @@ use App\Models\Quote;
 use App\Models\SalesOrder;
 use App\Models\Voided;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DocumentoController extends Controller
 {
@@ -139,29 +141,40 @@ class DocumentoController extends Controller
     }
 
     public function cantidadMesDash(){
-        $enero = Invoice::where('status',1)
-        ->whereMonth('invoices.created_at',01)
-        ->count();
-        $febrero = Invoice::where('status',1)
-        ->whereMonth('invoices.created_at',02)
-        ->count();
-        $marzo = Invoice::where('status',1)
-        ->whereMonth('invoices.created_at',03)
-        ->count();
-        $abril = Invoice::where('status',1)
-        ->whereMonth('invoices.created_at',04)
-        ->count();
-        $mayo = Invoice::where('status',1)
-        ->whereMonth('invoices.created_at',05)
-        ->count();
-        $junio = Invoice::where('status',1)
-        ->whereMonth('invoices.created_at',06)
-        ->count();
-        $julio = Invoice::where('status',1)
-        ->whereMonth('invoices.created_at',07)
-        ->count();
-        $array = array();
-        array_push($array,$enero,$febrero,$marzo,$abril,$mayo,$junio,$julio);
+        $array=array();
+        for ($i=1; $i <= 12 ; $i++) { 
+            $data = Invoice::where('status',1)
+            ->whereMonth('invoices.created_at',$i)->count();      
+            array_push($array,$data);
+        }
         return $array;
+    }
+    public function getEnterprise()
+    {
+        $arrayClient = array();
+        for ($i=1; $i <=12 ; $i++) { 
+            $data = Enterprise::where('status',1)
+            ->whereMonth('enterprises.created_at',$i)
+            ->count(); 
+            array_push($arrayClient, $data);   
+        }
+        return $arrayClient;
+    }
+    public function topClient()
+    {
+        $arrayTop = array();
+        for ($i=1; $i <=12 ; $i++) { 
+            $data = Invoice::join('enterprises as e', 'invoices.enterprise_id' , '=' ,'e.id')
+            ->select(DB::raw('count(*) as cantidad, business_name'))
+            ->whereMonth('invoices.created_at',$i)
+            ->whereYear('invoices.created_at',2022)
+            ->groupBy('e.business_name')
+            ->orderBy('cantidad','desc')
+            ->take(1)
+            ->get();
+            array_push($arrayTop,$data);
+        }
+             
+        return $arrayTop;
     }
 }
