@@ -434,7 +434,19 @@ $.ajax({
     }
 });
 
-
+$(document).ready( function () {
+    $('#table_id').DataTable( {
+        ajax: {
+            url: '/list',
+            dataSrc: 'data'
+        },
+        columns: [
+            {data: 'business_name'},
+            {data: 'cantidad'},
+        ]
+        
+    } );
+} );
 
 
 

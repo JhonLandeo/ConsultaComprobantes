@@ -170,7 +170,7 @@ class DocumentoController extends Controller
             ->select(DB::raw('count(*) as cantidad, business_name'))
             ->whereMonth('invoices.created_at',$i)
             ->whereYear('invoices.created_at',2022)
-            ->where('type_doc','!=',00)    
+            /* ->where('type_doc','!=',00) */    
             ->groupBy('e.business_name')
             ->orderBy('cantidad','desc')
             ->take(1)
@@ -179,5 +179,25 @@ class DocumentoController extends Controller
         }
              
         return $arrayTop;
+    }
+    public function list()
+    {
+        $data = array();
+        
+            $datos = Invoice::join('enterprises as e', 'invoices.enterprise_id' , '=' ,'e.id')
+            ->select(DB::raw('count(*) as cantidad, business_name'))
+            /* ->whereMonth('invoices.created_at',$i)
+            ->whereYear('invoices.created_at',2022) */
+            /* ->where('type_doc','!=',00) */    
+            ->groupBy('e.business_name')
+            ->orderBy('cantidad','desc')
+            ->get();
+        
+      
+        $json_data = array(
+            "data" => $datos,
+        );
+             
+        return $json_data;
     }
 }
