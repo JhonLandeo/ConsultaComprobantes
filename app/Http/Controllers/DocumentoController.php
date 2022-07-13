@@ -144,7 +144,9 @@ class DocumentoController extends Controller
         $array=array();
         for ($i=1; $i <= 12 ; $i++) { 
             $data = Invoice::where('status',1)
-            ->whereMonth('invoices.created_at',$i)->count();      
+            ->whereMonth('invoices.created_at',$i)
+            /* ->where('type_doc','!=',00) */
+            ->count();      
             array_push($array,$data);
         }
         return $array;
@@ -168,6 +170,7 @@ class DocumentoController extends Controller
             ->select(DB::raw('count(*) as cantidad, business_name'))
             ->whereMonth('invoices.created_at',$i)
             ->whereYear('invoices.created_at',2022)
+            ->where('type_doc','!=',00)    
             ->groupBy('e.business_name')
             ->orderBy('cantidad','desc')
             ->take(1)
