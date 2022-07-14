@@ -449,5 +449,5 @@ $(document).ready( function () {
     } );
 } );
 
-$("#formConsultaTotal").validate();
+
 
