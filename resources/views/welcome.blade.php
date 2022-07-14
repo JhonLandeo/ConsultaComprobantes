@@ -30,7 +30,7 @@
             <div class="col-3">
                 <div class="card p-2">
                     <div class="card-title">Consulta total</div>
-                    <form>
+                    <form id="formConsultaTotal">
                         <div class="form-group row">
                             <label for="numeroRuc" class="col-sm-4 col-form-label">Número RUC del emisor</label>
                             <div class="col-sm-8">
@@ -327,7 +327,7 @@
     <div class="container-fluid mt-2">
         
         <div class="row mt-3 d-flex justify-content-start mb-3">
-            <div class="card col-3">
+            <div class="card col-4">
                 <div class="">
                     <table id="table_id" class="display">
                         <thead>
@@ -353,11 +353,8 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
 <script src="{{ asset('js/script.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
 
-
-  
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-
-    
 
 </html>

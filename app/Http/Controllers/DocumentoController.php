@@ -188,7 +188,7 @@ class DocumentoController extends Controller
             ->select(DB::raw('count(*) as cantidad, business_name'))
             /* ->whereMonth('invoices.created_at',$i)
             ->whereYear('invoices.created_at',2022) */
-            /* ->where('type_doc','!=',00) */    
+            ->where('type_doc','!=',00)    
             ->groupBy('e.business_name')
             ->orderBy('cantidad','desc')
             ->get();

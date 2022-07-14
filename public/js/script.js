@@ -1,5 +1,6 @@
 
 
+
 $('#btnConsultar').click(function (e) {
     e.preventDefault();
     var ruc = $('#numeroRuc').val();
@@ -448,5 +449,5 @@ $(document).ready( function () {
     } );
 } );
 
-
+$("#formConsultaTotal").validate();
 
