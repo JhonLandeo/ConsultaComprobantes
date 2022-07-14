@@ -25,9 +25,9 @@
 </head>
 
 <body class="antialiased">
-    <div class="container mt-2">
-        <div class="row">
-            <div class="col-5">
+    <div class="container-fluid mt-2">
+        <div class="row d-flex justify-content-center">
+            <div class="col-3">
                 <div class="card p-2">
                     <div class="card-title">Consulta total</div>
                     <form>
@@ -102,7 +102,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-7">
+            <div class="col-3">
                 <div class="card p-2">
                     <div class="card-title ">Consulta por documento</div>
                     <form>
@@ -174,8 +174,96 @@
                     </form>
                 </div>
             </div>
+            <div class="form-group  col-6">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-4">
+                        <select class="form-control filtro " id="filtro" >
+                            <option value="" selected>Seleccione fecha</option>
+                            <option value=<?php echo date("Y-m-d H:i:s",strtotime("-0 days"));  ?> >Hoy</option>
+                            <option value=<?php echo date("Y-m-d H:i:s",strtotime("-1 days"));  ?> >Hace un dia</option>
+                            <option value=<?php echo date("Y-m-d H:i:s",strtotime("-2 days")); ?>  >Hace 2 días</option>
+                        </select>
+                        
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-success " id="btnConsultarFecha">Consultar</button>
+                    </div>
+                </div>
+                
+                <div class="row mt-2">
+                    <div class="col-6">
+                        <table class="table table-hover col-5 table-success table-striped table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="text-center" colspan="3" scope="row">ENVIO DE DOCUMENTOS</th>
+                                </tr>
+                              <tr>
+                                <th scope="col">Documento</th>
+                                <th scope="col">Pendientes</th>
+                                {{-- <th scope="col">Aceptados</th> --}}
+                                <th scope="col">Rechazados</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">Factura</th>
+                                <td class="fp"></td>
+                                {{-- <td>Otto</td> --}}
+                                <td class="fr"></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Boleta</th>
+                                <td class="bp"></td>
+                                {{-- <td>Thornton</td> --}}
+                                <td class="br"></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Nota de crédito</th>
+                                <td class="ncp"></td>
+                                {{-- <td>the Bird</td> --}}
+                                <td class="ncr"></td>
+                              </tr>
+                              {{-- <tr>
+                                <th scope="row">Nota de débito</th>
+                                <td class="ndp"></td>
+        
+                                <td class="ndr"></td>
+                              </tr> --}}
+                              <tr>
+                                <th scope="row">Total</th>
+                                <td class="totalPendientes"></td>
+                               {{--  <td>the Bird</td> --}}
+                                <td class="totalRechazados"></td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-5">
+                        <table class="table table-hover col-5 table-success table-striped table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="text-center" colspan="3" scope="row">ENVIO DE BAJAS</th>
+                                </tr>
+                              <tr>
+                                <th scope="col">Pendiente</th>
+                                <th scope="col">Rechazados</th>
+                                <th scope="col">En proceso</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="bap"></td>
+                                <td class="bar"></td>
+                                <td class="bapr"></td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div> 
         </div>
-        <div class="row mt-2">
+        <div class="row mt-2 align-items-center">
             {{-- <div class="col-5">
                 <div class="card p-2">
                     <div class="card-title">Consulta total por mes</div>
@@ -224,110 +312,22 @@
                     </form>
                 </div>
             </div> --}}
-            <div class="col-6">
+            <div class="col-3">
                 <canvas id="myChart" width="400" height="200"></canvas>
             </div>
-            <div class="col-6">
+            <div class="col-3">
                 <canvas id="chartEnterprise" width="400" height="200"></canvas>
             </div>
-        </div>
-        <div class="row d-flex justify-content-center">
-            <div class="col-12">
+            <div class="col-6">
                 <canvas id="chartClient" width="400" height="150"></canvas>
             </div>
         </div>
+
     </div>
-    <div class="container mt-2">
-        <div class="row d-flex align-items-center justify-content-center">
-            <div class="form-group m-2 col-2">
-                <div class="input-group mr-2">
-                    <select class="form-control filtro" id="filtro">
-                        <option value="" selected>Seleccione fecha</option>
-                        <option value=<?php echo date("Y-m-d H:i:s",strtotime("-0 days"));  ?> >Hoy</option>
-                        <option value=<?php echo date("Y-m-d H:i:s",strtotime("-1 days"));  ?> >Hace un dia</option>
-                        <option value=<?php echo date("Y-m-d H:i:s",strtotime("-2 days")); ?>  >Hace 2 días</option>
-                    </select>
-                </div>
-
-            </div>
-            <div class="col-3">
-                <button class="btn btn-success col-8" id="btnConsultarFecha">Consultar</button>
-
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <table class="table table-hover col-5 table-success table-striped table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th class="text-center" colspan="3" scope="row">ENVIO DE DOCUMENTOS</th>
-                        </tr>
-                      <tr>
-                        <th scope="col">Documento</th>
-                        <th scope="col">Pendientes</th>
-                        {{-- <th scope="col">Aceptados</th> --}}
-                        <th scope="col">Rechazados</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">Factura</th>
-                        <td class="fp"></td>
-                        {{-- <td>Otto</td> --}}
-                        <td class="fr"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Boleta</th>
-                        <td class="bp"></td>
-                        {{-- <td>Thornton</td> --}}
-                        <td class="br"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Nota de crédito</th>
-                        <td class="ncp"></td>
-                        {{-- <td>the Bird</td> --}}
-                        <td class="ncr"></td>
-                      </tr>
-                      {{-- <tr>
-                        <th scope="row">Nota de débito</th>
-                        <td class="ndp"></td>
-
-                        <td class="ndr"></td>
-                      </tr> --}}
-                      <tr>
-                        <th scope="row">Total</th>
-                        <td class="totalPendientes"></td>
-                       {{--  <td>the Bird</td> --}}
-                        <td class="totalRechazados"></td>
-                      </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-6">
-                <table class="table table-hover col-5 table-success table-striped table-bordered">
-                    <thead class="thead-light">
-                        <tr>
-                            <th class="text-center" colspan="3" scope="row">ENVIO DE BAJAS</th>
-                        </tr>
-                      <tr>
-                        <th scope="col">Pendiente</th>
-                        <th scope="col">Rechazados</th>
-                        <th scope="col">En proceso</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="bap"></td>
-                        <td class="bar"></td>
-                        <td class="bapr"></td>
-                      </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row mt-3 d-flex justify-content-center mb-3">
-            <div class="card col-8">
+    <div class="container-fluid mt-2">
+        
+        <div class="row mt-3 d-flex justify-content-start mb-3">
+            <div class="card col-3">
                 <div class="">
                     <table id="table_id" class="display">
                         <thead>
@@ -337,14 +337,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Row 1 Data 1</td>
-                                <td>Row 1 Data 2</td>
-                            </tr>
-                            <tr>
-                                <td>Row 2 Data 1</td>
-                                <td>Row 2 Data 2</td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
