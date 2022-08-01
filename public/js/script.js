@@ -262,7 +262,7 @@ $.ajax({
         const myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['Enero', 'Febr', 'Mar', 'Abril', 'Mayo', 'Junio','Julio'],
+                labels: ['Enero', 'Febr', 'Mar', 'Abril', 'Mayo', 'Junio','Julio','Agosto'],
                 datasets: [{
                     data: response,
                     backgroundColor: [
@@ -324,7 +324,7 @@ $.ajax({
         const myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['Enero', 'Febr', 'Mar', 'Abril', 'Mayo', 'Junio','Julio'],
+                labels: ['Enero', 'Febr', 'Mar', 'Abril', 'Mayo', 'Junio','Julio','Agosto'],
                 datasets: [{
                     data: response,
                     backgroundColor: [
