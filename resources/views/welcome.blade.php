@@ -183,13 +183,13 @@
                             <option value=<?php echo date("Y-m-d H:i:s",strtotime("-1 days"));  ?> >Hace un dia</option>
                             <option value=<?php echo date("Y-m-d H:i:s",strtotime("-2 days")); ?>  >Hace 2 días</option>
                         </select>
-                        
+
                     </div>
                     <div class="col-4">
                         <button class="btn btn-success " id="btnConsultarFecha">Consultar</button>
                     </div>
                 </div>
-                
+
                 <div class="row mt-2">
                     <div class="col-6">
                         <table class="table table-hover col-5 table-success table-striped table-bordered">
@@ -226,7 +226,7 @@
                               {{-- <tr>
                                 <th scope="row">Nota de débito</th>
                                 <td class="ndp"></td>
-        
+
                                 <td class="ndr"></td>
                               </tr> --}}
                               <tr>
@@ -260,8 +260,8 @@
                         </table>
                     </div>
                 </div>
-                
-            </div> 
+
+            </div>
         </div>
         <div class="row mt-2 align-items-center">
             {{-- <div class="col-5">
@@ -312,20 +312,18 @@
                     </form>
                 </div>
             </div> --}}
-            <div class="col-3">
+            <div class="col-6">
                 <canvas id="myChart" width="400" height="200"></canvas>
             </div>
-            <div class="col-3">
+            <div class="col-6">
                 <canvas id="chartEnterprise" width="400" height="200"></canvas>
             </div>
-            <div class="col-6">
-                <canvas id="chartClient" width="400" height="150"></canvas>
-            </div>
+
         </div>
 
     </div>
     <div class="container-fluid mt-2">
-        
+
         <div class="row mt-3 d-flex justify-content-start mb-3">
             <div class="card col-4">
                 <div class="">
@@ -337,14 +335,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                     </table>
                 </div>
             </div>
-            
+            <div class="col-8">
+                <canvas id="chartClient" width="400" height="150"></canvas>
+            </div>
+
         </div>
-        
+
 
 
 
