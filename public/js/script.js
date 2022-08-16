@@ -148,9 +148,47 @@ $("#btnConsultarFecha").click(function (e) {
                 if (key === "pendienteNC") {
                     $(".ncp").text(response[key]);
                 }
+                if (key === "pendienteNC") {
+                    $(".ncp").text(response[key]);
+                }
                 /* if (key === "pendientesND") {
                     $(".ndp").text(response[key]);
                 } */
+
+                if (key === "aprobados") {
+                    $(".totalAprobados").text(response[key]);
+                }
+                if (key === "aprobadoF") {
+                    $(".fa").text(response[key]);
+                }
+                if (key === "aprobadoB") {
+                    $(".ba").text(response[key]);
+                }
+                /* if (key === "aprobadoNC") {
+                    $(".ncp").text(response[key]);
+                } */
+                if (key === "aprobadoNC") {
+                    $(".nca").text(response[key]);
+                }
+                
+
+                if (key === "pendienteR") {
+                    $(".totalPendienteReproceso").text(response[key]);
+                }
+                if (key === "pendienteRF") {
+                    $(".fpr").text(response[key]);
+                }
+                if (key === "pendienteRB") {
+                    $(".bpr").text(response[key]);
+                }
+                /* if (key === "pendienteRNC") {
+                    $(".ncp").text(response[key]);
+                } */
+                if (key === "pendienteRNC") {
+                    $(".ncpr").text(response[key]);
+                }
+
+
                 if (key === "rechazados") {
                     $(".totalRechazados").text(response[key]);
                 }
@@ -174,6 +212,15 @@ $("#btnConsultarFecha").click(function (e) {
                 }
                 if (key === "bajaspr") {
                     $(".bapr").text(response[key]);
+                }
+                if (key === "bajasa") {
+                    $(".baa").text(response[key]);
+                }
+                if (key === "bajasp6") {
+                    $(".bap6").text(response[key]);
+                }
+                if (key === "bajaspr7") {
+                    $(".bapr7").text(response[key]);
                 }
     
             }

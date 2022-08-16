@@ -106,6 +106,11 @@ class DocumentoController extends Controller
         $pendienteB = Invoice::where('status',0)->whereDate('created_at',$created_at)->where('type_doc',03)->count();
         $pendienteNC = Invoice::where('status',0)->whereDate('created_at',$created_at)->where('type_doc',07)->count();
        /*  $pendienteNB = Invoice::where('status',0)->where('type_doc',08)->count(); */
+       $aprobados = Invoice::where('status',1)->whereDate('created_at',$created_at)->count();
+        $aprobadoF = Invoice::where('status',1)->whereDate('created_at',$created_at)->where('type_doc',01)->count();
+        $aprobadoB = Invoice::where('status',1)->whereDate('created_at',$created_at)->where('type_doc',03)->count();
+        $aprobadoNC = Invoice::where('status',1)->whereDate('created_at',$created_at)->where('type_doc',07)->count();
+
         $rechazados = Invoice::where('status',2)->whereDate('created_at',$created_at)->count();
         $rechazadosF = Invoice::where('status',2)->whereDate('created_at',$created_at)->where('type_doc',01)->count();
         $rechazadosB = Invoice::where('status',2)->whereDate('created_at',$created_at)->where('type_doc',03)->count();
@@ -114,6 +119,15 @@ class DocumentoController extends Controller
        $bajasp = Voided::where('status',3)->whereDate('created_at',$created_at)->count();
        $bajasr = Voided::where('status',5)->whereDate('created_at',$created_at)->count();
        $bajaspr= Voided::where('status',8)->whereDate('created_at',$created_at)->count();
+       $bajasa= Voided::where('status',4)->whereDate('created_at',$created_at)->count();
+       $bajasp6= Voided::where('status',6)->whereDate('created_at',$created_at)->count();
+       $bajaspr7= Voided::where('status',7)->whereDate('created_at',$created_at)->count();
+
+       $pendienteR = Invoice::where('status',3)->whereDate('created_at',$created_at)->count();
+        $pendienteRF = Invoice::where('status',3)->whereDate('created_at',$created_at)->where('type_doc',01)->count();
+        $pendienteRB = Invoice::where('status',3)->whereDate('created_at',$created_at)->where('type_doc',03)->count();
+        $pendienteRNC = Invoice::where('status',3)->whereDate('created_at',$created_at)->where('type_doc',07)->count();
+
         $array = [
             'pendientes' => $pendientes,
             'pendienteF' => $pendienteF,
@@ -128,6 +142,20 @@ class DocumentoController extends Controller
             'bajasp' => $bajasp,
             'bajasr' => $bajasr,
             'bajaspr' => $bajaspr,
+            'bajasa' => $bajasa,
+            'bajasp6' => $bajasp6,
+            'bajaspr7' => $bajaspr7,
+
+            'aprobados' => $aprobados,
+            'aprobadoF' => $aprobadoF,
+            'aprobadoB' => $aprobadoB,
+            'aprobadoNC' => $aprobadoNC,
+
+            'pendienteR' => $pendienteR,
+            'pendienteRF' => $pendienteRF,
+            'pendienteRB' => $pendienteRB,
+            'pendienteRNC' => $pendienteRNC,
+
         ];
         return $array;
     }

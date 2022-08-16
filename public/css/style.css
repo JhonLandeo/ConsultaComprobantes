@@ -1,4 +1,8 @@
 .product{
     text-decoration: none;
 }
+body{
+    background: rgba(240, 236, 236, 0.249) !important;
+    font-size: 14px !important;
+}
 
