@@ -106,7 +106,7 @@ class DocumentoController extends Controller
         $pendienteB = Invoice::where('status',0)->whereDate('created_at',$created_at)->where('type_doc',03)->count();
         $pendienteNC = Invoice::where('status',0)->whereDate('created_at',$created_at)->where('type_doc',07)->count();
        /*  $pendienteNB = Invoice::where('status',0)->where('type_doc',08)->count(); */
-       $aprobados = Invoice::where('status',1)->whereDate('created_at',$created_at)->count();
+       $aprobados = Invoice::where('status',1)->where('type_doc','!=',00)->whereDate('created_at',$created_at)->count();
         $aprobadoF = Invoice::where('status',1)->whereDate('created_at',$created_at)->where('type_doc',01)->count();
         $aprobadoB = Invoice::where('status',1)->whereDate('created_at',$created_at)->where('type_doc',03)->count();
         $aprobadoNC = Invoice::where('status',1)->whereDate('created_at',$created_at)->where('type_doc',07)->count();

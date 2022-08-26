@@ -217,7 +217,7 @@
                         <table class="table table-hover col-5  table-striped table-bordered">
                             <thead class="thead-light">
                                 <tr>
-                                    <th class="text-center" colspan="3" scope="row">ENVIO DE BAJAS</th>
+                                    <th class="text-center" colspan="6" scope="row">ENVIO DE BAJAS</th>
                                 </tr>
                               <tr>
                                 <th scope="col">Pendiente 3</th>
@@ -246,19 +246,12 @@
             </div>
         </div>
         <div class="row mt-2 align-items-center">
-            <div class="col-6">
+            <div class="col-4">
                 <canvas id="myChart" width="400" height="200"></canvas>
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <canvas id="chartEnterprise" width="400" height="200"></canvas>
             </div>
-
-        </div>
-
-    </div>
-    <div class="container-fluid mt-2">
-
-        <div class="row mt-3 d-flex justify-content-start mb-3">
             <div class="card col-4">
                 <div class="">
                     <table id="table_id" class="display">
@@ -274,16 +267,21 @@
                     </table>
                 </div>
             </div>
-            <div class="col-8">
-                <canvas id="chartClient" width="400" height="150"></canvas>
-            </div>
 
         </div>
 
-
-
-
     </div>
+    <div class="container-fluid mt-2">
+        <div class="row mt-3 d-flex justify-content-start mb-3">
+           
+            <div class="col-10" style="height: 200px">
+                <canvas id="chartClient" width="400" height="200"></canvas>
+            </div>
+
+        </div>
+    </div>
+    {{-- spiner --}}
+    
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
 <script src="{{ asset('js/script.js') }}"></script>

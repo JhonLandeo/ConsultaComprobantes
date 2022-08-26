@@ -3,6 +3,16 @@
 }
 body{
     background: rgba(240, 236, 236, 0.249) !important;
-    font-size: 14px !important;
+    font-size: 12px !important;
 }
-
+input{
+    padding: 3px 6px !important;
+    font-size: 12px !important;
+}
+select{
+    font-size: 12px !important;
+}
+#chartClient{
+    height: 450px !important;
+}
+/* SPINER */

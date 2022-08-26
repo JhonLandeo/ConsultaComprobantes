@@ -1,6 +1,3 @@
-
-
-
 $('#btnConsultar').click(function (e) {
     e.preventDefault();
     var ruc = $('#numeroRuc').val();
@@ -125,9 +122,8 @@ $('#btnConsultarDoc').click(function (e) {
 
 $("#btnConsultarFecha").click(function (e) { 
     e.preventDefault();
+
     var created_at = $(".filtro").val();
-    console.log(created_at);
-    
     $.ajax({
         type: "GET",
         url: "/proceso/"+created_at,
@@ -257,8 +253,7 @@ $(".form-item").submit(function(e){ //user clicks form submit button
                 $("table tr").each(function() {
                     nrows++;
                 })
-               console.log(nrows);
-               
+              
               let html = '<tr id="fila'+nrows+'" class="fila"><td>'+des+'</td><td>'+pri+'</td><td><input class="col-10 cant" value="'+cant+'"></td><td class="importe">'+pri*cant+'</td><td><input type="button" onclick="eliminarFila('+nrows+')" class="btn btn-danger" value="X" /></td></tr>';
                 $(".pro").append(html);
 
@@ -425,7 +420,6 @@ $.ajax({
             }
 
         }
-        console.log(arrayClient);
         
         const ctx = $('#chartClient');
         const myChart = new Chart(ctx, {
