@@ -29,7 +29,7 @@
     <div class="container-fluid mt-2">
         {{-- Consulta total y por documento --}}
         <div class="row d-flex justify-content-center mb-5">
-            <div class="col-5">
+            <div class="col-4">
                 <div class="card p-2">
                     <div class="card-title">Consulta total</div>
                     <form id="formConsultaTotal">
@@ -99,7 +99,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-5">
+            <div class="col-4">
                 <div class="card p-2">
                     <div class="card-title ">Consulta por documento</div>
                     <form>
@@ -159,8 +159,11 @@
                         <button class="btn btn-success " id="btnConsultarFecha">Consultar</button>
                     </div>
                 </div>
+                <div id="content" style="height: 20px">
+                    
+                </div>
 
-                <div class="row mt-2">
+                <div class="row mt-2" style="position: relative">
                     <div class="col-5 ">
                         <table class="table table-hover col-5  table-striped table-bordered">
                             <thead class="thead-dark">
