@@ -12,7 +12,5 @@ input{
 select{
     font-size: 12px !important;
 }
-#chartClient{
-    height: 450px !important;
-}
+
 /* SPINER */

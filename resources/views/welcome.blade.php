@@ -216,34 +216,58 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-7">
-                        <table class="table table-hover col-5  table-striped table-bordered">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th class="text-center" colspan="6" scope="row">ENVIO DE BAJAS</th>
-                                </tr>
-                              <tr>
-                                <th scope="col">Pendiente 3</th>
-                                <th scope="col">Rechazados 5</th>
-                                <th scope="col">Proceso con ticket</th>
-                                <th scope="col">Aceptado</th>
-                                <th scope="col">Pendiente sin ticket 6</th>
-                                <th scope="col">Proceso con ticke 7</th>
-
-                              </tr>
-                            </thead>
-                            <tbody class="text-center">
-                              <tr>
-                                <td class="bap"></td>
-                                <td class="bar"></td>
-                                <td class="bapr"></td>
-                                <td class="baa"></td>
-                                <td class="bap6"></td>
-                                <td class="bapr7"></td>
-                              </tr>
-                            </tbody>
-                        </table>
+                    <div class="row col-7">
+                        <div class="col-12">
+                            <table class="table table-hover col-5  table-striped table-bordered">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th class="text-center" colspan="6" scope="row">ENVIO DE BAJAS</th>
+                                    </tr>
+                                  <tr>
+                                    <th scope="col">Pendiente 3</th>
+                                    <th scope="col">Rechazados 5</th>
+                                    <th scope="col">Proceso con ticket</th>
+                                    <th scope="col">Aceptado</th>
+                                    <th scope="col">Pendiente sin ticket 6</th>
+                                    <th scope="col">Proceso con ticke 7</th>
+    
+                                  </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                  <tr>
+                                    <td class="bap"></td>
+                                    <td class="bar"></td>
+                                    <td class="bapr"></td>
+                                    <td class="baa"></td>
+                                    <td class="bap6"></td>
+                                    <td class="bapr7"></td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-12">
+                            <table class="table table-hover col-5  table-striped table-bordered">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th class="text-center" colspan="3" scope="row">ENVIO DE GUIAS DE REMISION</th>
+                                    </tr>
+                                  <tr>
+                                    <th scope="col">Rechazados</th>
+                                    <th scope="col">Aceptado</th>
+                                    <th scope="col">Pendiente</th>    
+                                  </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                  <tr>
+                                    <td class="gr"></td>
+                                    <td class="gapr"></td>
+                                    <td class="gp"></td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                    
                 </div>
 
             </div>
@@ -277,7 +301,7 @@
     <div class="container-fluid mt-2">
         <div class="row mt-3 d-flex justify-content-start mb-3">
            
-            <div class="col-10" style="height: 200px">
+            <div class="col-8">
                 <canvas id="chartClient" width="400" height="200"></canvas>
             </div>
 

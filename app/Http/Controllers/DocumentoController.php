@@ -128,6 +128,11 @@ class DocumentoController extends Controller
         $pendienteRB = Invoice::where('status',3)->whereDate('created_at',$created_at)->where('type_doc',03)->count();
         $pendienteRNC = Invoice::where('status',3)->whereDate('created_at',$created_at)->where('type_doc',07)->count();
 
+        /* Guias */
+        $aprobadoG = Guide::where('status',1)->whereDate('created_at',$created_at)->count();
+        $pendienteG = Guide::where('status',0)->whereDate('created_at',$created_at)->count();
+        $rechazadoG = Guide::where('status',2)->whereDate('created_at',$created_at)->count();
+
         $array = [
             'pendientes' => $pendientes,
             'pendienteF' => $pendienteF,
@@ -156,9 +161,14 @@ class DocumentoController extends Controller
             'pendienteRB' => $pendienteRB,
             'pendienteRNC' => $pendienteRNC,
 
+            'aprobadoG' => $aprobadoG,
+            'pendienteG' => $pendienteG,
+            'rechazadoG' => $rechazadoG,
+
         ];
         return $array;
     }
+
 
     public function cantidadMes($year, $month){
         $docMes = Invoice::where('status',1)

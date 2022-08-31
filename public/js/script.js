@@ -222,6 +222,17 @@ $(document).ready(function(){
                     if (key === "bajaspr7") {
                         $(".bapr7").text(response[key]);
                     }
+
+
+                    if (key === "rechazadoG") {
+                        $(".gr").text(response[key]);
+                    }
+                    if (key === "aprobadoG") {
+                        $(".gapr").text(response[key]);
+                    }
+                    if (key === "pendienteG") {
+                        $(".gp").text(response[key]);
+                    }
         
                 }
             }
