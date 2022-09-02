@@ -319,7 +319,7 @@ $(document).ready(function(){
             const myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['Enero', 'Febr', 'Mar', 'Abril', 'Mayo', 'Junio','Julio','Agosto'],
+                    labels: ['Enero', 'Febr', 'Mar', 'Abril', 'Mayo', 'Junio','Julio','Agosto','Sept'],
                     datasets: [{
                         data: response,
                         backgroundColor: [
@@ -381,7 +381,7 @@ $(document).ready(function(){
             const myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['Enero', 'Febr', 'Mar', 'Abril', 'Mayo', 'Junio','Julio','Agosto'],
+                    labels: ['Enero', 'Febr', 'Mar', 'Abril', 'Mayo', 'Junio','Julio','Agosto','Sept'],
                     datasets: [{
                         data: response,
                         backgroundColor: [
@@ -503,6 +503,23 @@ $(document).ready( function () {
         columns: [
             {data: 'business_name'},
             {data: 'cantidad'},
+        ]
+        
+    } );
+} );
+
+$(document).ready( function () {
+    $('#table_doc').DataTable( {
+        ajax: {
+            url: '/listActualizar',
+            dataSrc: 'data'
+        },
+        columns: [
+            {data: 'series'},
+            {data: 'number'},
+            {data: 'error'},
+            {data: 'error_code'},
+            {data: 'status'},
         ]
         
     } );

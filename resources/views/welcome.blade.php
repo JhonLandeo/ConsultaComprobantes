@@ -29,7 +29,7 @@
     <div class="container-fluid mt-2">
         {{-- Consulta total y por documento --}}
         <div class="row d-flex justify-content-center mb-5">
-            <div class="col-4">
+            <div class="col-3">
                 <div class="card p-2">
                     <div class="card-title">Consulta total</div>
                     <form id="formConsultaTotal">
@@ -99,7 +99,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 <div class="card p-2">
                     <div class="card-title ">Consulta por documento</div>
                     <form>
@@ -140,6 +140,22 @@
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="col-6 card">
+                <table id="table_doc" class="display">
+                    <thead>
+                        <tr>
+                            <th>Serie</th>
+                            <th>Correlativo</th>
+                            <th>Mensaje</th>
+                            <th>Codigo</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
             </div>
         </div>
         {{-- Tabla de status --}}

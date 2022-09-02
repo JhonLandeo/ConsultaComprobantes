@@ -81,8 +81,6 @@ class DocumentoController extends Controller
         ->count();
         return $purchase;
     }
-
-   
     public function doc( $ruc, $type, $series, $number){
 
 
@@ -97,9 +95,6 @@ class DocumentoController extends Controller
         ->get();
         return $doc;
     }
-
-    
-    
     public function procesar($created_at){
         $pendientes = Invoice::where('status',0)->whereDate('created_at',$created_at)->count();
         $pendienteF = Invoice::where('status',0)->whereDate('created_at',$created_at)->where('type_doc',01)->count();
@@ -169,7 +164,6 @@ class DocumentoController extends Controller
         return $array;
     }
 
-
     public function cantidadMes($year, $month){
         $docMes = Invoice::where('status',1)
         ->whereMonth('invoices.created_at',$month)
@@ -231,6 +225,23 @@ class DocumentoController extends Controller
             ->orderBy('cantidad','desc')
             ->get();
         
+      
+        $json_data = array(
+            "data" => $datos,
+        );
+             
+        return $json_data;
+    }
+
+    public function listActualizar()
+    {
+        $fecha = date("Y-m-d",strtotime("-0 days"));
+        $datos = Invoice::select('series','number','error','error_code','status')
+        ->where('status',3)
+        ->orWhere('status',1)
+        ->where('type_doc','!=',00)
+        ->whereDate('created_at',$fecha)
+        ->get();
       
         $json_data = array(
             "data" => $datos,
